@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
-const path = process.env.REACT_APP_API_URL
+const path = "https://611758a730022f0017a05dda.mockapi.io/memory-game/"
 
 const useGetData = (url, initialState = null) => {
   const [data, setData] = useState(initialState)

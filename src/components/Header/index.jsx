@@ -14,6 +14,8 @@ import { getItemsCount } from '../../redux/cart'
 
 const Header = () => {
   const location = useLocation()
+  const like = useSelector(state => state.like)
+  const likedItemsCount = Object.values(like).length
   const cartItemsCount = useSelector(getItemsCount)
   return (
     <header className={classes['header']}>
@@ -21,11 +23,14 @@ const Header = () => {
         <Link to="/" className={classes['header__logo']}>
           <img src={logo} alt="Floristman" />
         </Link>
-        <Link to="/favorite">
+        <Link to="/favorite" className={classes['header__bag-wrapper']}>
           <FontAwesomeIcon
             icon={faHeart}
             className={classes['header__heart']}
           />
+          {Boolean(cartItemsCount) && (
+            <p className={classes['header__bag-count']}>{likedItemsCount}</p>
+          )}
         </Link>
         <Link to={'/cart'} className={classes['header__bag-wrapper']}>
           <FontAwesomeIcon
